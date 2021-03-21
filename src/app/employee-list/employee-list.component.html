@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-sm bg-light"> 
+    <ul class="navbar-nav ml-auto"> 
+      <li class="nav-item"> 
+          <a [routerLink] = "['/admin']" class="nav-link" href="#" >
+            Home
+          </a> 
+      </li> 
+      <li class="nav-item"> 
+          <a class="nav-link" href="#" routerLink="/login"> 
+            Logout 
+          </a> 
+      </li>     
+  </ul>   
+  </nav> 
+<h2 style=color:grey> All Employees</h2>
+<div class="form-group">
+    Filter By  &nbsp; &nbsp;       
+    <select #role (change)="onChange(role.value,technology.value)" 
+    formControlName="role">>
+        <option value =" ">  </option>
+        <option value ="Software Developer" >Software Developer</option>
+        <option value ="Senior Developer">Senior Developer</option>
+        <option value ="Business Consultant">Business Consultant</option>
+        <option value ="Scrum Master">Scrum Master</option>
+        <option value ="Tribe Lead">Tribe Lead</option>
+    </select>
+    &nbsp; &nbsp; 
+    <select #technology (change)="onChange(role.value,technology.value)" name="primaryTechnology"
+        formControlName="technology">>
+            <option value =" " selected> </option>
+            <option value ="Java">Java</option>
+            <option value ="Mainframe">Mainframe</option>
+            <option value ="Angular">Angular</option>
+            <option value ="Data Warehousing">Data Warehousing</option>
+        </select>
+    </div> 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>EmailId</th>
+            <th>Team</th>
+            <th>Role</th>
+            <th>Technology</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees">
+            <td> {{employee.name}} </td>
+            <td> {{employee.mobileNr}}</td>
+            <td> {{employee.emailid}} </td>
+            <td> {{employee.teamName}}</td>
+            <td> {{employee.role}}</td>
+            <td> {{employee.primaryTechnology}}</td>
+            <td><button (click)="deleteEmployee(employee.emailid)" class="btn btn-primary">Delete</button>
+            <td><button (click)="updateEmployeeDetails(employee.emailid)" class="btn btn-primary">Update</button>
+    
+        </tr>
+    </tbody>    
+</table>
+
+

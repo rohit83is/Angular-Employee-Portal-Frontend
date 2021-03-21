@@ -1,0 +1,7 @@
+{
+    "/employeePortal/*": {
+        "target": "http://localhost:92",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

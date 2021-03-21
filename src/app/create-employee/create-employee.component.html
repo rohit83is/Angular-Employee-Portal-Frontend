@@ -1,0 +1,103 @@
+<div class="col-md-6">
+    
+    <h3 style="color:grey"> Add Employee  </h3>
+    <form [formGroup]="userEmails" (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label> Name* </label>
+            <input type = "text" class="form-control" id="name" formControlName="name" 
+            [(ngModel)] = "employee.name" name="name">
+        </div> 
+        <div class="form-group">       
+            <label> Choose a Password*                 
+            </label>        
+            <input [class.is-invalid] = "userEmails.get('passwd').invalid && userEmails.get('passwd').touched"
+             type = "password" class="form-control" id="passwd" formControlName="passwd"
+            [(ngModel)] = "employee.password" name="password"  
+              >
+        </div> 
+        <div *ngIf="(passd.invalid && passd.touched) || passd.dirty">
+            <small *ngIf="passd.errors?.required" class="text-danger">Password is required</small>
+            <!--question mark(?) is a safe navigation operator-->
+            <small *ngIf="passd.errors?.pattern" class="text-danger">Password must be 8 characters long</small>
+            
+        </div>       
+        <div class="form-group">       
+            <label> Mobile Nr.  </label>        
+            <input [class.is-invalid] = "userEmails.get('mobileNr').invalid && userEmails.get('mobileNr').touched"
+            type = "text" class="form-control" id="mobileNr" formControlName="mobileNr"
+            [(ngModel)] = "employee.mobileNr" name="mobileNr">
+        </div> 
+        <div *ngIf="(mobile.invalid && mobile.touched) || mobile.dirty">
+            <small *ngIf="mobile.errors?.required" class="text-danger">Mobile Number is required</small>
+            <!--question mark(?) is a safe navigation operator-->
+            <small *ngIf="mobile.errors?.pattern" class="text-danger">Please provide a valid mobile number</small>
+        </div>
+        <div class="form-group">       
+            <label> Email* </label>
+            <input [class.is-invalid] = "userEmails.get('primaryEmail').invalid && userEmails.get('primaryEmail').touched"
+            id="emailId" type="email" class="form-control" formControlName="primaryEmail"                        
+            [(ngModel)] = "employee.emailid" name="emailId">            
+        </div>      
+        <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+            <small *ngIf="primEmail.errors?.required" class="text-danger">Email is required</small>
+            <!--question mark(?) is a safe navigation operator-->
+            <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+        </div>
+        
+        <div>       
+            <label> Team  </label>
+        </div>
+        <div class="form-group">
+            <select #select (change)="onChange()" [(ngModel)] = "employee.teamName" name="teamName"
+            formControlName="team">>
+                <option value =" "> </option>
+                <option value ="BOB Builders">BOB Builders</option>
+                <option value ="BOB PUMA">BOB PUMA</option>
+                <option value ="KAPJAM">KAPJAM</option>
+                <option value ="Team Delta">Team Delta</option>
+            </select>
+        </div>               
+            <div>
+            <label> Role </label>
+            </div>
+            <div class="form-group">
+            <select #select (change)="onChange()" [(ngModel)] = "employee.role" name="role"
+            formControlName="role">>
+                <option value =" "> </option>
+                <option value ="Software Developer">Software Developer</option>
+                <option value ="Senior Developer">Senior Developer</option>
+                <option value ="Business Consultant">Business Consultant</option>
+                <option value ="Scrum Master">Scrum Master</option>
+                <option value ="Tribe Lead">Tribe Lead</option>
+            </select>
+            </div>      
+        
+        <div>
+        <label> Select Technology</label>
+        </div>
+        <div class="form-group">
+        <select #select (change)="onChange()" [(ngModel)] = "employee.primaryTechnology" name="primaryTechnology"
+        formControlName="technology">>
+            <option value =" "> </option>
+            <option value ="Java">Java</option>
+            <option value ="Mainframe">Mainframe</option>
+            <option value ="Angular">Angular</option>
+            <option value ="Data Warehousing">Data Warehousing</option>
+        </select>
+        </div>
+
+        <div>
+            <label> Select Photo</label>
+        </div>        
+        <div class="form-group">
+            <div >
+                <input type="file" (change)="onFileChanged($event)">
+            </div>            
+        </div>
+        <div class="btn-toolbar">   
+        <button  class ="btn btn-primary mr-3" type=submit> Submit </button>
+        <button class ="btn btn-primary mr-3" type="reset" ng-click="reset()" > Reset </button>
+        </div>
+    
+  
+    

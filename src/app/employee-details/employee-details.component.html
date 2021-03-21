@@ -1,0 +1,74 @@
+<form>
+<nav class="navbar navbar-expand-sm bg-light"> 
+  <ul class="navbar-nav ml-auto"> 
+    <li class="nav-item"> 
+        <a  class="nav-link" href="#">           
+          Home
+        </a> 
+    </li> 
+    <li class="nav-item"> 
+        <a class="nav-link" href="#" routerLink="/login"> 
+          Logout 
+        </a> 
+    </li>     
+</ul>   
+</nav>
+  
+<h2 style=color:grey>Employee Details</h2> 
+
+<hr/>
+<style>
+  img {
+    border-radius: 50%;
+  }
+  </style>
+<div class="row">
+  <div class="col-md-4" *ngIf=retrievedImage>    
+      <img [src]="retrievedImage" alt="Avatar" style="width:200px">                     
+    </div>    
+  
+  <div class="col-md-6" *ngIf="employee">
+    <div>
+      <label><b> Name: </b></label><fieldset><input [readonly]= true type = "text" class="form-control" id="name" 
+      [(ngModel)] = "employee.name" name="name"> </fieldset>
+    </div>  
+    <div>
+      <label><b>Email Id: </b></label> <fieldset><input [readonly]= true  type = "text" class="form-control" id="emailId" 
+        [(ngModel)] = "employee.emailid" name="emailId"> </fieldset>
+    </div>  
+  
+  <div>
+      <label><b>Mobile Number: </b></label> <fieldset><input [readonly]="isEditable" type = "text" class="form-control" id="mobileNr" 
+        [(ngModel)] = "employee.mobileNr" name="mobileNr"> </fieldset>
+    </div>  
+  
+  <div>
+      <label><b>Team: </b></label> <fieldset><input [readonly]="isEditable" type = "text" class="form-control" id="team" 
+        [(ngModel)] = "employee.teamName" name="team"> </fieldset>
+    </div>  
+  
+  <div>
+      <label><b>Role: </b></label> <fieldset><input [readonly]="isEditable" type = "text" class="form-control" id="role" 
+        [(ngModel)] = "employee.role" name="role"> </fieldset>
+      
+  </div>
+  <div>
+      <label><b>Primary Technology: </b></label> <fieldset><input [readonly]="isEditable" type = "text" class="form-control" id="technology" 
+        [(ngModel)] = "employee.primaryTechnology" name="technology"> </fieldset>
+  </div>  
+  
+  <div class="form-group">
+  </div>
+  <div class="form-group" *ngIf="isEditable; else showSave">
+    <button class="btn btn-primary mr-3" (click)="showEditPage()">Edit Details</button>
+  </div>
+  <ng-template #showSave>
+    <button class="btn btn-primary mr-3"  (click)="editDetails()">Save</button>
+  </ng-template>
+       
+   </div>
+   </div>
+<br>
+<br>
+</form>
+

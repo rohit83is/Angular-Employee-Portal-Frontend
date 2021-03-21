@@ -1,0 +1,17 @@
+<h2 style="text-align: left;color:#069">Administrator Page </h2>
+<span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
+<div class="form-group">
+    <a [routerLink] = "['create-employee']" (click)="handleRegistration()" href="#">           
+      Add Employee
+    </a> 
+  </div> 
+  <div class="form-group">
+    <a [routerLink] = "['employee-list']" (click)="viewEmployeeList()" href="#">           
+      View All Employees
+    </a> 
+  </div>
+  <div class="form-group">
+    <a [routerLink] = "['employee-list']"  href="#">           
+      Add a new Team
+    </a> 
+  </div> 

@@ -1,0 +1,36 @@
+<div>
+  <br>
+  <h2 style="text-align: center;color:#069">{{title}} </h2>
+  <hr> 
+</div>
+<div class="container col-lg-6">
+    <h2 style=color:#069> Login</h2>
+    <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group">
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>          
+          <div class="form-group">
+            <label for="email">Email </label>            
+            <input type="email" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter Email"
+              name="username">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
+              name="password">
+          </div>
+          <div class="form-group">
+          <button (click)=handleLogin() class="btn btn-primary mr-3">Login</button>            
+          </div>
+          <div class="form-group">
+            <a [routerLink] = "['/forgot-password']" (click) = "navigateToForgotPasswordPage()" href="#">           
+              Forgot Password
+            </a> 
+          </div>    
+        </form>
+      </div>
+    </div>
+  </div>
+
